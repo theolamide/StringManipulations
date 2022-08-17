@@ -37,8 +37,34 @@ namespace WorkingWithStrings
                 myString.Append("--");
                 myString.Append(i);
             }
-
+            
             Console.WriteLine(myString);
+            //Console.ReadLine();
+
+            //Contribution = show that the execution time of using stringBuilder is faster than using the + operator
+            //string + operator
+            Console.WriteLine("\nTest execution times\n");
+            string str = string.Empty;
+            DateTime st = DateTime.Now;//set time now
+            for(int i = 0; i<100; i++)
+            {
+                str+="--"+i;
+            }
+            TimeSpan ts = DateTime.Now - st;//get execution time
+            Console.WriteLine(str);
+            Console.WriteLine("Execution time using normal + operator: " + ts.TotalMilliseconds + " milliseconds\n");
+
+            //stringBuilder
+            st = DateTime.Now;//set time now
+            StringBuilder strB = new StringBuilder();
+            for(int i = 0; i<100;i++)
+            {
+                strB.Append("--");
+                strB.Append(i);
+            }
+            ts = DateTime.Now - st;//get execution time
+            Console.WriteLine(strB.ToString());
+            Console.WriteLine("Execution time using string builder: " + ts.TotalMilliseconds + " milliseconds\n");
             Console.ReadLine();
         }
     }
